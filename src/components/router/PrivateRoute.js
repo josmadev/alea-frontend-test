@@ -3,7 +3,7 @@ import { useAuthContext } from "../../contexts/authContext";
 
 export default function PublicRoutes() {
     const { isAuthenticated } = useAuthContext();
-
+    
     if (!isAuthenticated) {
         return <Navigate to="/login" />
     }

@@ -8,25 +8,28 @@ export const AuthContext = createContext();
 
 export function AuthContextProvider({children}) {
     const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem(AUTH_APP) ?? false);
+    const [user, setUser] = useState(null);
 
-    const login = useCallback(() => {
-        setIsAuthenticated(true)
+    const login = useCallback((email) => {
         localStorage.setItem(AUTH_APP, true)
+        setIsAuthenticated(true)
+        setUser(email)
     }, [])
 
     const logout = useCallback(() => {
-        setIsAuthenticated(false)
         localStorage.removeItem(AUTH_APP)
+        setIsAuthenticated(false)
     }, [])
 
     // useMemo and useCallback to avoid re-rendering the entire object for each page render
     const value = useMemo(
         () => ({
-            isAuthenticated,
+            user,
             login,
-            logout
+            logout,
+            isAuthenticated
         }),
-        [isAuthenticated, login, logout]
+        [ user, login, logout, isAuthenticated]
     )
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
