@@ -1,14 +1,20 @@
-import React from 'react'
-import { useAuthContext } from '../../contexts/authContext'
+import React from "react";
+import { useAuthContext } from "../../contexts/authContext";
+import "./navbarStyles.css";
 
 const Navbar = () => {
-  const { user } = useAuthContext()
+  const { user, logout } = useAuthContext();
 
   return (
-    <header className='headerContainer'>
-      
+    <header className="headerContainer">
+      <span className="emailUser">
+        <strong>User:</strong> {user}
+      </span>
+      <button className="buttonLogout" onClick={logout}>
+        Logout
+      </button>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

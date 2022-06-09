@@ -1,9 +1,59 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { fetchData } from "../../helpers/fecthData";
+import Navbar from "../../components/Navbar/Navbar";
+import Table from "../../components/Table/Table";
+import TableOptions from "../../components/TableOptions/TableOptions";
+import Pagination from "../../components/Pagination/Pagination";
+
+import "./usersStyles.css";
 
 const Users = () => {
-  return (
-    <div>Users</div>
-  )
-}
+  const [usersPerPage, setUsersPerPage] = useState("5");
+  const [page, setPage] = useState("1");
+  const [userData, setUserData] = useState(null);
+  const [totalPages, setTotalPages] = useState(null);
 
-export default Users
+  useEffect(() => {
+    (async () => {
+      const response = await fetchData(
+        `${process.env.REACT_APP_API_URL}/users?per_page=${usersPerPage}&page=${page}`,
+        "GET"
+      );
+
+      const data = await response;
+      console.log(data);
+      setUserData(data.data);
+      setTotalPages(data.total_pages);
+    })();
+  }, [page, usersPerPage]);
+
+  const selectUsersPerPage = value => {
+    setUsersPerPage(value);
+  };
+
+  const selectPage = value => {
+    setPage(value);
+  };
+
+  return (
+    <div className="content">
+      <Navbar />
+      <section className="usersContiner">
+        <h1>Users</h1>
+        <TableOptions
+          event={selectUsersPerPage}
+          optionSelected={usersPerPage}
+          resetPage={selectPage}
+        />
+        {userData ? <Table userData={userData} /> : <span>SPINER HERE</span>}
+        {totalPages ? (
+          <Pagination totalPages={totalPages} event={selectPage} />
+        ) : (
+          <span>SPINER HERE</span>
+        )}
+      </section>
+    </div>
+  );
+};
+
+export default Users;

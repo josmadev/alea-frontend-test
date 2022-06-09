@@ -1,0 +1,42 @@
+.formContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputLogin {
+    width: 15%;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--dark);
+    padding: 10px;
+    margin: 8px 0;
+    outline: none;
+}
+
+.inputLogin:focus {
+    border: 1px solid var(--primary);
+    background-color: var(--light);
+}
+
+.loginButton {
+    background-color: var(--primary);
+    margin-top: 8px;
+    width: 7%;
+    padding: 10px 20px;
+    border: none;
+    color: var(--light);
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.loginButton:hover {
+    background-color: var(--secondary);
+}
+
+.loginError {
+    color: var(--tertiary);
+    font-size: 20px;
+    font-weight: bold;
+}

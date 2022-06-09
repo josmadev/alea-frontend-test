@@ -1,0 +1,8 @@
+.loginContainer {
+    text-align: center;
+}
+
+.loginContainer h1 {
+    color: var(--dark);
+    margin-bottom: 0px;
+}

@@ -1,0 +1,29 @@
+.notFoundPageContainer {
+    text-align: center;
+}
+
+.title404 {
+    margin-bottom: 0px;
+}
+
+.subtitle404 {
+    font-size: 18px;
+}
+
+.contentImg {
+    margin-top: 50px;
+}
+
+.buttonBack {
+    background-color: var(--primary);
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 10px 60px;
+    transition: 0.3s;
+}
+
+.buttonBack:hover {
+    background-color: var(--secondary);
+}

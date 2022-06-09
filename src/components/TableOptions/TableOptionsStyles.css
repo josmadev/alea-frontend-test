@@ -1,0 +1,32 @@
+.optionsContainer {
+    margin-bottom: 20px;
+}
+
+.options {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.option {
+    margin-right: 10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    width: 40px;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.option:hover {
+    background-color: rgb(204, 204, 204);
+}
+
+.active {
+    margin-right: 10px;
+    border-radius: 50px;
+    background-color: #ccc;
+    width: 40px;
+    text-align: center;
+    padding: 5px 10px;
+}

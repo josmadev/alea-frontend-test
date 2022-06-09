@@ -1,0 +1,20 @@
+.paginationContainer {
+    margin-top: 20px;
+}
+
+.pages {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.page {
+    margin-right: 7px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding: 5px 5px;
+}

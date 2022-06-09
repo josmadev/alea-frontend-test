@@ -1,45 +1,64 @@
-import { useState } from 'react'
-import { useAuthContext } from '../../contexts/authContext'
-import PropTypes from "prop-types";
-import { fetchData } from '../../helpers/fecthData';
+import { useState } from "react";
+import { useAuthContext } from "../../contexts/authContext";
+import { fetchData } from "../../helpers/fecthData";
+import "./LoginFormStyles.css";
 
-const LoginForm = ({ title }) => {
-    const { login } = useAuthContext()
+const LoginForm = () => {
+  const { login } = useAuthContext();
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
-    const handleChangeEmail = (event, type) => {
-        setEmail(event.target.value)
+  const handleChangeEmail = (event, type) => {
+    setEmail(event.target.value);
+    setError(false);
+  };
+
+  const handleChangePassword = (event, type) => {
+    setPassword(event.target.value);
+    setError(false);
+  };
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    console.log(email, password);
+    const data = await fetchData(
+      `${process.env.REACT_APP_API_URL}/login`,
+      "POST",
+      { email, password }
+    );
+    if (data.token) {
+      login(email);
+    } else {
+      setError(true);
     }
+  };
 
-    const handleChangePassword = (event, type) => {
-        setPassword(event.target.value)
-    }
+  return (
+    <div className="formContainer">
+      <form onSubmit={handleSubmit}>
+        <input
+          className="inputLogin"
+          type="email"
+          placeholder="Username"
+          onChange={handleChangeEmail}
+          required
+        />
+        <input
+          className="inputLogin"
+          type="password"
+          placeholder="Password"
+          onChange={handleChangePassword}
+          required
+        />
+        <button className="loginButton" type="submit">
+          Login
+        </button>
+        {error && <p className="loginError">Invalid username or password</p>}
+      </form>
+    </div>
+  );
+};
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        console.log(email, password)
-        const data = await fetchData(`${process.env.REACT_APP_API_URL}/login`, 'POST', { email, password })
-        if (data.token) {
-            login(email)
-        }
-    }
-
-    return (
-        <div className="formContainer">
-            <h1>{title}</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Username" onChange={handleChangeEmail} required />
-                <input type="password" placeholder="Password" onChange={handleChangePassword} required />
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    )
-}
-
-LoginForm.propTypes = {
-    title: PropTypes.string.isRequired
-}
-
-export default LoginForm
+export default LoginForm;
