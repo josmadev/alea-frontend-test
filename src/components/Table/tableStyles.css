@@ -1,11 +1,34 @@
-table {
-    border: 1px solid grey;
+table  th:nth-child(1) {
+    border-top-left-radius: 20px;
+}
+
+table  th:nth-child(3) {
+    border-top-right-radius: 20px;
 }
 
 table th {
+    background-color: var(--light-dark);
     width: 200px;
+    font-size: 18px;
+    padding: 10px;
 }
 
-table tbody tr {
+table tbody {
+    background-color: var(--light);
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--light-dark);
+}
+
+table tr {
     text-align: center;
+}
+
+table td {
+    padding: 10px;
+}
+
+.name {
+    font-weight: bolder;
 }

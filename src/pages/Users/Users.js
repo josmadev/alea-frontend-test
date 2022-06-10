@@ -5,7 +5,7 @@ import Table from "../../components/Table/Table";
 import TableOptions from "../../components/TableOptions/TableOptions";
 import Pagination from "../../components/Pagination/Pagination";
 
-import "./usersStyles.css";
+import "./UsersStyles.css";
 
 const Users = () => {
   const [usersPerPage, setUsersPerPage] = useState("5");
@@ -21,7 +21,6 @@ const Users = () => {
       );
 
       const data = await response;
-      console.log(data);
       setUserData(data.data);
       setTotalPages(data.total_pages);
     })();
@@ -40,17 +39,23 @@ const Users = () => {
       <Navbar />
       <section className="usersContiner">
         <h1>Users</h1>
-        <TableOptions
-          event={selectUsersPerPage}
-          optionSelected={usersPerPage}
-          resetPage={selectPage}
-        />
-        {userData ? <Table userData={userData} /> : <span>SPINER HERE</span>}
-        {totalPages ? (
-          <Pagination totalPages={totalPages} event={selectPage} />
-        ) : (
-          <span>SPINER HERE</span>
-        )}
+        <section className="userTableContainer">
+          <TableOptions
+            event={selectUsersPerPage}
+            optionSelected={usersPerPage}
+            resetPage={selectPage}
+          />
+          {userData ? <Table userData={userData} /> : <span>SPINER HERE</span>}
+          {totalPages ? (
+            <Pagination
+              totalPages={totalPages}
+              pageSelected={page}
+              event={selectPage}
+            />
+          ) : (
+            <span>SPINER HERE</span>
+          )}
+        </section>
       </section>
     </div>
   );

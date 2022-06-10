@@ -22,7 +22,6 @@ const LoginForm = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    console.log(email, password);
     const data = await fetchData(
       `${process.env.REACT_APP_API_URL}/login`,
       "POST",

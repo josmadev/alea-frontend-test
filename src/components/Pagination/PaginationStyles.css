@@ -1,5 +1,6 @@
 .paginationContainer {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .pages {
@@ -12,9 +13,26 @@
 .page {
     margin-right: 7px;
     border-radius: 20px;
-    border: 1px solid #ccc;
     width: 20px;
     height: 20px;
     text-align: center;
     padding: 5px 5px;
+    background-color: var(--light-dark);
+    cursor: pointer;
+    transition: 0.2s;
 }
+
+.page:hover {
+    background-color: var(--secondary);
+}
+
+.pageActive {
+    color: var(--light);
+    margin-right: 7px;
+    border-radius: 20px;
+    background-color: var(--primary);
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding: 5px 5px;
+} 

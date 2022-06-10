@@ -1,5 +1,6 @@
 .optionsContainer {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .options {
@@ -10,22 +11,25 @@
 }
 
 .option {
+    cursor: pointer;
     margin-right: 10px;
     border-radius: 50px;
-    border: 1px solid #ccc;
+    background-color: var(--light-dark);
     width: 40px;
     text-align: center;
     padding: 5px 10px;
+    transition: 0.2s;
 }
 
 .option:hover {
-    background-color: rgb(204, 204, 204);
+    background-color: var(--secondary);
 }
 
 .active {
+    color: var(--light);
     margin-right: 10px;
     border-radius: 50px;
-    background-color: #ccc;
+    background-color: var(--primary);
     width: 40px;
     text-align: center;
     padding: 5px 10px;

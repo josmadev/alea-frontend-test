@@ -16,6 +16,10 @@ code {
   --primary: #94B49F;
   --secondary: #ECB390;
   --tertiary: #DF7861;
-  --light: #FCF8E8;
+  --light: #F5F5F5;
+  --primary-dark: #7F9D6D;
+  --secondary-dark: #C27E5E;
+  --tertiary-dark: #9F5F3F;
+  --light-dark: #E5E5E5;
   --dark: #2F353D;
 }

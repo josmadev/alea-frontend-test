@@ -24,7 +24,7 @@ const Table = props => {
                 />
               </td>
               <td>
-                <span>{user.first_name}</span>
+                <span className="name">{user.first_name}</span>
                 <br />
                 <span>{user.last_name}</span>
               </td>

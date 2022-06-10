@@ -2,7 +2,6 @@ import React from "react";
 import "./TableOptionsStyles.css";
 
 const TableOptions = ({ event, optionSelected, resetPage }) => {
-  console.log(optionSelected);
   return (
     <section className="optionsContainer">
       <p>Users per page</p>
