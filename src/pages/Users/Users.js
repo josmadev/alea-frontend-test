@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchData } from "../../helpers/fecthData";
+import { getUsersList } from "../../utils/getUsersList";
 import Navbar from "../../components/Navbar/Navbar";
 import Table from "../../components/Table/Table";
 import TableOptions from "../../components/TableOptions/TableOptions";
@@ -15,14 +15,9 @@ const Users = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetchData(
-        `${process.env.REACT_APP_API_URL}/users?per_page=${usersPerPage}&page=${page}`,
-        "GET"
-      );
-
-      const data = await response;
-      setUserData(data.data);
-      setTotalPages(data.total_pages);
+      const response = await getUsersList(usersPerPage, page);
+      setUserData(response.data);
+      setTotalPages(response.total_pages);
     })();
   }, [page, usersPerPage]);
 
@@ -45,7 +40,7 @@ const Users = () => {
             optionSelected={usersPerPage}
             resetPage={selectPage}
           />
-          {userData ? <Table userData={userData} /> : <span>SPINER HERE</span>}
+          {userData ? <Table userData={userData} /> : <span>No data</span>}
           {totalPages ? (
             <Pagination
               totalPages={totalPages}
@@ -53,7 +48,7 @@ const Users = () => {
               event={selectPage}
             />
           ) : (
-            <span>SPINER HERE</span>
+            <span>No data</span>
           )}
         </section>
       </section>

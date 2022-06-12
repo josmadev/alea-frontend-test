@@ -2,15 +2,15 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useAuthContext } from "../../contexts/authContext";
 
 export default function PublicRoutes() {
-    const { isAuthenticated } = useAuthContext();
+  const { isAuthenticated } = useAuthContext();
 
-    if (isAuthenticated) {
-        return <Navigate to="/users" />
-    }
+  if (isAuthenticated) {
+    return <Navigate to="/users" />;
+  }
 
-    return (
-        <div>
-            <Outlet />
-        </div>
-    )
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
 }
