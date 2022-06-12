@@ -14,7 +14,7 @@ Steps to get a local copy up and running follow these simple steps.
   `npm install`
 3. Run the app with:
   `npm run start`
-  
+
 ## Usage
 To login into the app you should use a user *email* from this list:
 * michael.lawson@reqres.in
@@ -26,6 +26,10 @@ To login into the app you should use a user *email* from this list:
 You can enter the *password* you like
 
 Once logged in, you will go directly to the Users page.
+
+### Testing
+· To run the Unit Testing
+`npm run test`
 
 ## Improvements points and optimization
 One of the points that need an improvement is especially the part of Unit Tests
