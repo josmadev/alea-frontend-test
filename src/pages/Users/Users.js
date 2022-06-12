@@ -5,7 +5,7 @@ import Table from "../../components/Table/Table";
 import TableOptions from "../../components/TableOptions/TableOptions";
 import Pagination from "../../components/Pagination/Pagination";
 
-import "./UsersStyles.css";
+import "./usersStyles.css";
 
 const Users = () => {
   const [usersPerPage, setUsersPerPage] = useState("5");
